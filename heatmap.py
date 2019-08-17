@@ -3,7 +3,6 @@ import cv2 as cv
 import math
 import random
 
-field = cv.imread('field.png')
 
 def mapv(val, in_min, in_max, out_min, out_max):
     return (val - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
@@ -27,14 +26,14 @@ def generate_heatmap(shape, min_v, max_v):
         [291, 392,{'moisture' : random.randint(min_v, max_v)}],
     ]
     value_map = []
-    for i in range(512):
+    for i in range(shape[0]):
         li = []
-        for j in range(512):
+        for j in range(shape[1]):
             li.append([0, 0])
         value_map.append(li)
 
-    for i in range(512):
-        for j in range(512):
+    for i in range(shape[0]):
+        for j in range(shape[1]):
             total_r = sum([get_dist(sensor[1], sensor[0], j, i) for sensor in sensors])
             for sensor in sensors:
                 r = get_dist(sensor[1], sensor[0], i, j) 
@@ -52,16 +51,16 @@ def generate_heatmap(shape, min_v, max_v):
     #             img[i][j][2] = value_map[i][j][0] / value_map[i][j][1]
     #             img[i][j][2] = mapvimg[i][j][0], 0, value_map[i][j][0], 255, 0)
 
-    imagen = np.array([[value_map[i][j][0] for j in range(shape[0])] for i in range(shape[1])])
+    sensor_data = np.array([[value_map[i][j][0] for j in range(shape[1])] for i in range(shape[0])])
     heatmapshow = None
-    heatmapshow = cv.normalize(-imagen, heatmapshow, alpha=0, beta=255, norm_type=cv.NORM_MINMAX, dtype=cv.CV_8U)
+    heatmapshow = cv.normalize(-sensor_data, heatmapshow, alpha=0, beta=255, norm_type=cv.NORM_MINMAX, dtype=cv.CV_8U)
     heatmapshow = cv.applyColorMap(heatmapshow, cv.COLORMAP_JET)
 
     # result = cv.addWeighted(heatmapshow, 0.9, field, 0.1,0.0)
     # cv.imshow('image',heatmapshow)
     # cv.waitKey(0)
 
-    return heatmapshow
+    return heatmapshow, sensor_data
 
 # field = cv.resize(field, dsize=(512, 512))
 
@@ -74,11 +73,14 @@ def generate_heatmap(shape, min_v, max_v):
 #     heatmapshow = cv.applyColorMap(heatmapshow, cv.COLORMAP_JET)
 #     # cv.destroyAllWindows()
 
-#     result = cv.addWeighted(heatmapshow, 0.9, field, 0.1,0.0)
-#     cv.imshow('image',result)
-#     cv.waitKey(0)
-#         # update_sensors()
-#     pass
+# result = cv.addWeighted(heatmapshow, 0.9, field, 0.1,0.0)
+# cv.imshow('image',result)
+# cv.waitKey(0)
+#     # update_sensors()
+# pass
 
 # loop()
-generate_heatmap((512, 512), 0, 100)
+# img = generate_heatmap((512, 600), 0, 100)
+
+# cv.imshow('image',img)
+# cv.waitKey(0)
