@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap');
+
+* {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.main-container {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 90vh;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+.content-section {
+    padding: 20px 10px;
+    height: 100%;
+}
+
+.full-card {
+    height: 100%;
+    padding: 20px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    -webkit-box-shadow: 1px 6px 14px -4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 1px 6px 14px -4px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 6px 14px -4px rgba(0, 0, 0, 0.2);
+}
+
+.graph-card {
+    padding: 12px;
+}
+
+.display-card {
+    border : none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.cust-btn {
+    transition: 0.3s;
+    background-color: #ebedee;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    -webkit-box-shadow: 1px 6px 14px -4px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 6px 14px -4px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 6px 14px -4px rgba(0, 0, 0, 0.3);
+}
+
+.cust-btn:hover {
+    background-color: #192e27;
+}
+
+.input-par {
+    box-sizing: content-box;
+    display: inline;
+    width: 5ch;
+    height: 13px;
+    padding: 5px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.pie {
+    height: 300px;
+    /* width: 330px !important; */
+}
+
+p, label {
+    margin-bottom: 0;
+}
+
+p {
+    font-size: 14px;
+    color: gray;
+}
+
+input[type='checkbox'] {
+    background-color: #192e27;
+}
+
+#check1div, #check2div, #check3div {
+    padding: 0 10px;
+    display: block;
+}
+
+#check1, #check2, #check3 {
+    background-color: red !important;
+}
+
+#param-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#apply-btn {
+    text-align: center;
+    margin-bottom: 100px;
+}
+ 
+#top {
+    box-sizing: border-box;
+    height: 10vh;
+    background-image: linear-gradient( 120deg, #1f3d33 10%, #32745e 100%);
+}
+
+#display {
+    position: relative;
+    top: -30%
+}
